@@ -1,22 +1,56 @@
+
+/*----------------------------------*/
+/* Basic Setup  */
+/*----------------------------------*/
+
 * {
     
     padding: 0;
     box-sizing: content-box;
 }
 
-html{
+html,
+body {
     background-color: #362B2F;
     color: #D1D1D1;
-    font-family: "National Park", "Bookman", sans-serif;
+    font-family: "Montserrat", "Bookman", sans-serif;
     font-weight: 300;
     font-size: 20px;
-    text-rendering: optimizeLegibility; 
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
 }
+
+.clearfix {zoom: 1}
+.clearfix::after {      /* This will clear a float after an element*/
+    content: '.';
+    clear: both;
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+
+/*----------------------------*/
+/* REUSEABLE COMPONENTS */
+/*----------------------------*/
 
 .row {
     max-width: 1140px;
     margin: 0 auto;
 }
+
+
+/*----------------------------*/
+/* HEADER  */
+/*----------------------------*/
+
+header {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(img/madison-min.jpg);
+    background-size: cover;
+    background-position: center; 
+    background-attachment: fixed;
+    height: 100vh;
+}
+
 
 .logo img {
     margin: 90px 50px;
@@ -26,58 +60,60 @@ html{
     border-radius: 100%;
 }
 
-header {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(img/madison.jpg);
-    background-size: cover;
-    background-position: center; 
-    height: 100vh;
-}
+/*----------------------------*/
+/* HEADINGS  */
+/*----------------------------*/
 
-h1{
-    margin-top: 100px;
-    margin-bottom: 20px;
-    margin-right: 175px;
+
+h1,
+h2 {
+    margin-bottom: 10px;
+    margin-right: 20%;
+    margin-left: 20%;
     color: #ffa801;
-    font-size: 240%;
-    font-weight: 350;
-    letter-spacing: 1px;
-    word-spacing: 3px;
-    float: right;
+    text-shadow: #D1D1D1;
+    letter-spacing: 5px;
+    word-spacing: 2px;
+    text-align: center;
+    font-family: 'Pacifico', cursive;
+    text-shadow: 1px #362B2F;
+}
+h1 {
+    margin-top: 125px;
+    font-size: 440%;
+    font-weight: 400;
 }
 
+h2 {
+    font-size: 340%;
+    font-weight: 200;
+}
+
+h3 { margin-bottom: -20px; }
 
 /*----------------------- NAV BAR-----------------------------------*/
-
 .nav-bar {
-    float:right;
     list-style: none;
-    margin-top: 150px;
-    margin-left: 200px;
+    margin-left: 50%;
+    
 }
 
-.nav-bar-text{
-    margin-top: 100px;
-    margin-left: 25px;
-    position: relative;
-}
-
-.nav-bar li{
-    display: inline-block;
-    margin-left: 40px;
-}
+.nav-bar li { display: inline-block; }
 
 /*----------------------- BUTTONS-----------------------------------*/
 
+input[type=submit],
 .btn:link,
 .btn:visited {
-    display: inline-table;
+    display: inline-block;
     margin-left: 25px;
     padding: 10px 30px; 
     font-weight: 300;
     text-decoration: none;
-    border-radius: 200px;
-    transition: background-color 4s, border 3s, color 2s;
+    border-radius: 100px;
+    transition: background-color 0.2s, border 0.2s, color 0.2s;
 }
+
 
 .btn-watch:link,
 .btn-watch:visited{
@@ -90,7 +126,7 @@ h1{
 .btn-about:link,
 .btn-about:visited{
     margin-right: 2px;
-    border: 1px solid #ffa801; 
+    border: 1px solid #f5a40e; 
     background-color: #362B2F;
     color: #d1d1d1;
 
@@ -104,18 +140,215 @@ h1{
     color: #d1d1d1;
 }
 
+input[type=submit],
 .btn:hover,
 .btn:active {
-    background-color: #cf6d17;
+    background-color: #ffa801;
+    color: #423f3f;
 }
 
 .btn-watch:hover,
 .btn-watch:active {
-    border: 1px solid #cf6d17;
+    border: 1px solid #ffa801;
+    color: #423f3f;
 }
 
 .btn-about:hover,
 .btn-about:active {
-    border: 1px solid #cf6d17;
+    border: 1px solid #ffa801;
+    color: #423f3f;
+}
+
+/*----------------------------*/
+/*  ABOUT SECTION  */
+/*----------------------------*/
+
+.about-servers { 
+    background-color: #362B2F; 
+    margin-bottom: 2%;
+}
+
+.everyone {  
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+.about-box { padding: 20px 20px; }
+
+span { color: #ffa801; }
+
+.about-box p { 
+    display: inline-block;
+}
+
+.kid-box { 
+    padding-top: 30px; 
+    padding-right: 20px;
+}
+
+
+/*----------------------------*/
+/*  FLIP BOXES */
+/*----------------------------*/
+
+.flip-box {
+    background-color: transparent;
+    width: 500px;
+    height: 350px;
+    border: transparent;
+    perspective: 1000px;
+  }
+
+  .flip-box img {
+    height: 135px;
+    width: auto;
+    position: relative;
+    border: 2px solid #ffa801;
+    border-radius: 50%; 
+}
+  
+  .flip-box-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+  }
+  
+  .flip-box:hover .flip-box-inner {
+    transform: rotateY(180deg);
+  }
+  
+  .flip-box-front, 
+  .flip-box-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+  }
+  
+  .flip-box-front {
+    background-color: #362B2F;
     color: #fff;
+  }
+  
+  .flip-box-back {
+    background-color: #362B2F;
+    color: #fff;
+    transform: rotateY(180deg);
+  }
+
+/* -----------------------*/
+
+
+
+/*----------------------------*/
+/*  WATCH SECTION  */
+/*----------------------------*/
+
+.watch-features h2{ color: #362B2F; }
+
+.watch-features {
+    background-color: #ffa801;
+    margin-bottom: 25px;
+}
+ .video { 
+     padding: 10px 0; 
+     display: inline;
+    }
+
+iframe { border: none; }
+
+.top-row,
+.bottom-row { 
+        margin-right: 20%;
+        margin-left: 20%;
+}
+
+.bottom-row { margin-bottom: -60px; }
+
+.watch-features a { 
+    padding: 2% 2%;
+    display: inline;
+    text-decoration: none;
+    text-align: center;
+    font-family: "Pacifico";
+    font-weight: 150;
+    letter-spacing: 1px;
+}
+
+/*----------------------------*/
+/*  CONTACT BOX  */
+/*----------------------------*/
+
+.contact-sdc {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(img/balloons-min.jpg);
+    background-size: cover;
+    background-position: center; 
+    background-attachment: fixed;
+    height: 100vh; 
+}
+
+.contact-sdc h2{ color: #ffa801;}
+
+.contact-form {
+    background-color: #362B2F;
+    width: 50%;
+    border: 2px solid #ffa801;
+    margin-top: 10px;
+    margin-right: 25%;
+    margin-left: 22%;
+    padding: 25px 25px;
+ }
+
+ label{
+    margin-left: 25px;
+    padding: 7px;
+    text-align: left;
+    display: inline-block;
+}
+
+select,
+input[type=email],
+input[type=text] {
+    margin-top: 2px;
+    margin-bottom: -25px;
+    margin-left: -25px;
+}
+
+input[type=email]{
+    margin-top: 5%;
+}
+
+
+textarea {
+    border: 1px solid #ffa801;
+    border-radius: 15%;
+    width: 100%;
+    margin-left: 42%;
+    padding: 7px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+}
+
+input[type=submit]{
+    margin-top: 10%;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-bottom: 5%;
+    border: 1px solid #ffa801; 
+    background-color: #362B2F;
+    color: #d1d1d1;
+    font-family: "Montserrat";
+    font-weight: 400;
+}
+
+/*----------------------------*/
+/*  FOOTER  */
+/*----------------------------*/
+footer {
+    background-color: #362B2F;
+    padding: 30px;
+    font-size: 80%;
 }
